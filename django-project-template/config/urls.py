@@ -20,5 +20,7 @@ urlpatterns = [
     url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
     url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')), #If you're intending to use the browsable API you'll probably also want to add REST framework's login and logout views
     # url(r'', include(""))
 ]
