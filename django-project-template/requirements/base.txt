@@ -1,2 +1,5 @@
 Django==1.9.1
 django-jet==0.1.4
+djangorestframework
+markdown
+django-filter
