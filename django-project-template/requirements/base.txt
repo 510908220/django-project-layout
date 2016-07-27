@@ -3,3 +3,4 @@ django-jet==0.1.4
 djangorestframework
 markdown
 django-filter
+django-model-utils
