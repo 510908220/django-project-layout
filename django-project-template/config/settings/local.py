@@ -51,8 +51,13 @@ LOGGING = {
     },
     'loggers': {
         'django': {
-            'handlers': ['default', 'error', 'console'],
+            'handlers': ['default', 'error'],
             'level': 'DEBUG',
+            'propagate': False
+        },
+        'api': {
+            'handlers': ['default', 'error'],
+            'level': 'INFO',
             'propagate': False
         },
     }

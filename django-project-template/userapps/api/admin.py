@@ -10,7 +10,7 @@ from models import Shop
 @admin.register(Shop)
 class ShopAdmin(admin.ModelAdmin):
     fieldsets = (
-        ("基本信息", {'fields': ('name', 'created')}),
+        ("基本信息", {'fields': ('name', )}),
         ("属性", {'fields': ('category', 'status')}),
     )
 

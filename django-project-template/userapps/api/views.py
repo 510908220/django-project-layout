@@ -14,12 +14,11 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from .models import Shop
 from .serializers import ShopSerializer
 
-
-from utils import time_format, emails, jen
-
 logger = logging.getLogger("api")
 
-# http://blog.jobbole.com/41233/ 
+# http://blog.jobbole.com/41233/
+
+
 class CsrfExemptSessionAuthentication(SessionAuthentication):
     """
     开始像POST之类的请求时可以的，后来应该是执行了migrate,创建了用户，然后执行POST之类的请求
