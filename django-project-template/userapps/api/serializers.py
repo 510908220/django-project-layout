@@ -7,4 +7,4 @@ class ShopSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Shop
-        fields = ('id', 'name', 'category', 'status', 'created')
+        fields = ('__all__')

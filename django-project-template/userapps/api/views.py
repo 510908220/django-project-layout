@@ -31,26 +31,28 @@ class CsrfExemptSessionAuthentication(SessionAuthentication):
         return  # To not perform the csrf check previously happening
 
 
-class ShopView(APIView):
+class ShopList(APIView):
     """
-    开发者管理
+    商店创建与获取
     """
     authentication_classes = (
         CsrfExemptSessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, format=None):
-        return Response(ShopSerializer(shop, many=True).data, status=status.HTTP_200_OK)
+        shops = Shop.objects.all()
+        serializer = ShopSerializer(shops, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, format=None):
-        """
-        创建新的资源
-        """
-        shop = Shop.create_shop(request.data)
-        return Response(ShopSerializer(shop).data, status=status.HTTP_200_OK)
+        serializer = ShopSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class ShopItemView(APIView):
+class ShopDetail(APIView):
     """
     获取可用的项目列表
     """
@@ -58,23 +60,37 @@ class ShopItemView(APIView):
         CsrfExemptSessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
+    def get_shop(self, shop_id):
+        try:
+            shop = Shop.objects.get(pk=shop_id)
+            return shop
+        except Shop.DoesNotExist:
+            return None
+
     def get(self, request, shop_id, format=None):
         """
         获取资源
         """
-        shop = Shop.get_shop(shop_id)
-        return Response(ShopSerializer(shop).data, status=status.HTTP_200_OK)
+        shop = self.get_shop(shop_id)
+        if not shop:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = ShopSerializer(shop)
+        return Response(serializer.data)
 
     def put(self, request, shop_id, format=None):
-        """
-        修改资源
-        """
-        shop = Shop.update_shop(shop_id, request.data)
-        return Response(ShopSerializer(shop).data, status=status.HTTP_200_OK)
+        shop = self.get_shop(shop_id)
+        if not shop:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = ShopSerializer(shop, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, shop_id, format=None):
-        """
-        删除资源
-        """
-        Shop.delete_shop(shop_id)
+        shop = self.get_shop(shop_id)
+
+        # 删除是等幕操作
+        if shop:
+            shop.delete()
         return Response({}, status=status.HTTP_204_NO_CONTENT)

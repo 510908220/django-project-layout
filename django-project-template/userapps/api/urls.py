@@ -9,8 +9,8 @@ from smarturls import surl
 from .views import *
 
 urlpatterns = [
-    surl(r'/shops/', ShopView.as_view(), name='shop'),
-    surl(r'/shops/<username:shop_id>', ShopItemView.as_view(), name='shop_item'),
+    surl(r'/shops/', ShopList.as_view(), name='shop_list'),
+    surl(r'/shops/<username:shop_id>', ShopDetail.as_view(), name='shop_detail'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

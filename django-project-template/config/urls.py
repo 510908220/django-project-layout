@@ -26,5 +26,5 @@ urlpatterns = [
     # to add REST framework's login and logout views
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'', include("userapps.ui.urls")),
-    url(r'', include("userapps.api.urls")),
+    url(r'^api/', include("userapps.api.urls")),
 ]
