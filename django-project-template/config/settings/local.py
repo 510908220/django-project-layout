@@ -7,7 +7,15 @@ from .base import *
 
 DEBUG = True
 
-INSTALLED_APPS += ('debug_toolbar',)
+INSTALLED_APPS += ('debug_toolbar', 'django_extensions',)
+
+# jupyter参数
+NOTEBOOK_ARGUMENTS = [
+    '--ip', 'localhost',
+    '--port', '9527',
+    # '--notebook-dir', os.path.join(BASE_DIR, "jupyter")
+]
+
 
 LOG_DIR = os.path.join(BASE_DIR, "log")
 

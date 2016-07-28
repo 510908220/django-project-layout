@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
 
-     'userapps.ui',
-     'userapps.api',
+    'userapps.ui',
+    'userapps.api',
 ]
 
 MIDDLEWARE_CLASSES = [
