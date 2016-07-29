@@ -1,3 +1,4 @@
+# -*- encoding:utf-8 - *-
 from rest_framework.urlpatterns import format_suffix_patterns
 from smarturls import surl
 
@@ -6,7 +7,7 @@ from .views import *
 from rest_framework.urlpatterns import format_suffix_patterns
 from smarturls import surl
 
-from .views import *
+from .views import ShopList, ShopDetail
 
 urlpatterns = [
     surl(r'/shops/', ShopList.as_view(), name='shop_list'),

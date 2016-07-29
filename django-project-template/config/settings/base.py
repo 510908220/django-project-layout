@@ -1,3 +1,4 @@
+# -*- encoding:utf-8 -*-
 """
 Django settings for shop project.
 
@@ -126,3 +127,13 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        # 'rest_framework_xml.renderers.XMLRenderer',
+        # 需要支持.xml的话打开注释并安装xml相关render即可
+    ),
+}
