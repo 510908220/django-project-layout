@@ -3,7 +3,7 @@ python:
   - "2.7"
 install:
   # Build/test dependencies
-  - pip install -r ./django-project-template/requirments/local.txt
+  - pip install -r ./django-project-template/requirements/local.txt
   # Get fab to test fab
 before_script:
   # Allow us to SSH passwordless to localhost
