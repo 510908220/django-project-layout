@@ -10,4 +10,4 @@ before_script:
 
 script:
   # Normal tests
-  - python django-project-template/manage.py test
+  - python ./django-project-template/manage.py test
