@@ -18,4 +18,4 @@ class AnimalTestCase(TestCase):
         apple = Shop.objects.get(name="apple")
         xiaomi = Shop.objects.get(name="xiaomi")
         self.assertEqual(apple.name, 'apple')
-        self.assertEqual(apple.name, 'xiaomi')
+        self.assertEqual(xiaomi.name, 'xiaomi')
