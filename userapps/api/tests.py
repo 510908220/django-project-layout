@@ -9,7 +9,7 @@ from userapps.api.models import Shop
 class AnimalTestCase(TestCase):
 
     def setUp(self):
-        Shop.objects.all.delete()
+        Shop.objects.all().delete()
         Shop.objects.create(name="apple")
         Shop.objects.create(name="xiaomi")
 
