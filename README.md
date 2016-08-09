@@ -33,7 +33,7 @@ config
 
 1.  根据模板创建工程
 ```
-django-admin startproject --template=https://github.com/510908220/django-project-layout/archive/v1.0.tar.gz project_name
+django-admin startproject --template=https://github.com/510908220/django-project-layout/archive/v1.1.tar.gz project_name
 ```
 
 2.  安装包，执行```pip install -r requirements/local.txt```
